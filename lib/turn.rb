@@ -12,7 +12,7 @@ def correct?
 end
 
 def feedback
-  return "Correct!" if correct? == true
+  return "Correct!" if correct?
   return "Incorrect."
 end
 

@@ -18,9 +18,9 @@ end
 def take_turn(guess)
   yourturn = Turn.new(guess, self.current_card)
   @currentcard += 1
-  @numbercorrect += 1 if yourturn.correct? == true
+  @numbercorrect += 1 if yourturn.correct?
   @categorynumbercorrect[yourturn.card.category]
-  @categorynumbercorrect[yourturn.card.category] += 1 if yourturn.correct? == true
+  @categorynumbercorrect[yourturn.card.category] += 1 if yourturn.correct?
   @turns << yourturn
   return yourturn
 end
@@ -34,6 +34,7 @@ def number_correct_by_category(category)
 end
 
 def percent_correct_by_category(category)
+  #so this is a long statement. todo
   return (@categorynumbercorrect[category] / @turns.select{|turn| category == turn.card.category}.length.to_f * 100).round(1)
 end
 

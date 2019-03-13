@@ -23,15 +23,15 @@ class TurnTest < Minitest::Test
 
   def test_a_turn_object_takes_a_card_as_an_argument
     card = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
-    turn = Turn.new("Juneau", card
+    turn = Turn.new("Juneau", card)
 
-    assert_equal card, turn.card #get feedback here maybe
+    assert_equal card, turn.card
   end
 
   def test_it_has_a_guess
     card = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
     turn = Turn.new("Juneau", card)
-    
+
     assert_equal "Juneau", turn.guess
   end
 
