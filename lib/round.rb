@@ -1,6 +1,7 @@
-  class Round
   require_relative "./turn.rb"
 
+class Round
+  
   attr_reader :deck, :turns, :guess, :numbercorrect
 
   def initialize(deck)
