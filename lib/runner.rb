@@ -5,30 +5,30 @@ require_relative './turn.rb'
 
 class Runner
 
-card1 = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
-card2 = Card.new("The Viking spacecraft sent back to Earth photographs and reports about the surface of which planet?", "Mars", :STEM)
-card3 = Card.new("Describe in words the exact direction that is 697.5° clockwise from due north?", "North north west", :STEM)
-deck = Deck.new([card1, card2, card3])
-round = Round.new(deck)
+  card1 = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
+  card2 = Card.new("The Viking spacecraft sent back to Earth photographs and reports about the surface of which planet?", "Mars", :STEM)
+  card3 = Card.new("Describe in words the exact direction that is 697.5° clockwise from due north?", "North north west", :STEM)
+  card4 = Card.new("Who is Chris's favorite person/dragon ever in the whole world ever?", "Kayden!!!!!!", :Chris)
+  deck = Deck.new([card1, card2, card3, card4])
+  round = Round.new(deck)
 
-cardsleftracker = deck.count
+  cardsleftracker = deck.count
 
-puts "Welcome! You're playing with #{deck.count} cards."
-puts "-------------------------------------------------"
+  puts "Welcome! You're playing with #{deck.count} cards."
+  puts "-------------------------------------------------"
 
-until cardsleftracker == 0
-puts "This is card number #{round.turns.length + 1} out of #{deck.count}."
-puts "Question: #{round.current_card.question}."
-print "> "
-answer = gets.chomp
-currentturn = round.take_turn(answer)
-puts "#{currentturn.feedback}"
-cardsleftracker -= 1
-end
+  until cardsleftracker == 0
+  puts "This is card number #{round.turns.length + 1} out of #{deck.count}."
+  puts "Question: #{round.current_card.question}"
+  print "> "
+  answer = gets.chomp
+  currentturn = round.take_turn(answer)
+  puts "#{currentturn.feedback}"
+  cardsleftracker -= 1
+  end
 
-puts "****** Game over! ******"
-puts "You had #{round.numbercorrect} correct guesses out of #{deck.count} for a total score of #{round.percent_correct}."
-#todo 
-
+  puts "****** Game over! ******"
+  puts "You had #{round.numbercorrect} correct guesses out of #{deck.count} for a total score of #{round.percent_correct.round}%."
+  round.category_list.each{|category| puts "#{category} - #{round.percent_correct_by_category(category).round}% correct"}
 
 end
