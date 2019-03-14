@@ -1,7 +1,7 @@
-  require_relative "./turn.rb"
+require_relative "./turn.rb"
 
 class Round
-  
+
   attr_reader :deck, :turns, :guess, :numbercorrect
 
   def initialize(deck)
@@ -9,6 +9,7 @@ class Round
     @turns = []
     @currentcard = 0
     @numbercorrect = 0
+    #using a hash to store category correct, key is category and value is number correct.
     @categorynumbercorrect = Hash.new(0)
   end
 

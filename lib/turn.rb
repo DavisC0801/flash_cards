@@ -8,7 +8,8 @@ class Turn
   end
 
   def correct?
-    return @guess == card.answer
+    #downcase is to remove case sensitivity in answers
+    return @guess.downcase == card.answer.downcase
   end
 
   def feedback

@@ -5,12 +5,11 @@ require_relative '../lib/card.rb'
 
 class TurnTest < Minitest::Test
 
-  def test_it_loads_itself_as_requirement
-    assert '../lib/turn.rb'
-  end
+  def test_it_exists
+    card = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
+    turn = Turn.new("Juneau", card)
 
-  def test_it_loads_card_as_requirement
-    assert '../lib/card.rb'
+    assert_instance_of Turn, turn
   end
 
   def test_card_object_contains_all_info

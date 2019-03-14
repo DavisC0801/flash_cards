@@ -6,16 +6,14 @@ require_relative '../lib/round.rb'
 
 class RoundTest < Minitest::Test
 
-  def test_it_loads_card_as_requirement
-    assert "../lib/card.rb"
-  end
+  def test_it_exists
+    card1 = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
+    card2 = Card.new("The Viking spacecraft sent back to Earth photographs and reports about the surface of which planet?", "Mars", :STEM)
+    card3 = Card.new("Describe in words the exact direction that is 697.5° clockwise from due north?", "North north west", :STEM)
+    deck = Deck.new([card1, card2, card3])
+    round = Round.new(deck)
 
-  def test_it_loads_deck_as_requirement
-    assert "../lib/deck.rb"
-  end
-
-  def test_it_loads_itself_as_requirement
-    assert "../lib/round.rb"
+    assert_instance_of Round, round
   end
 
   def test_round_object_contains_deck_object
