@@ -5,60 +5,50 @@ require_relative '../lib/card.rb'
 
 class TurnTest < Minitest::Test
 
-  def test_it_exists
-    card = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
-    turn = Turn.new("Juneau", card)
+  def setup
+    @card = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
+    @turn = Turn.new("Juneau", @card)
+  end
 
-    assert_instance_of Turn, turn
+  def test_it_exists
+    assert_instance_of Turn, @turn
   end
 
   def test_card_object_contains_all_info
-    card = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
-
-    assert_equal card.question, "What is the capital of Alaska?"
-    assert_equal card.answer, "Juneau"
-    assert_equal card.category, :Geography
+    assert_equal @card.question, "What is the capital of Alaska?"
+    assert_equal @card.answer, "Juneau"
+    assert_equal @card.category, :Geography
   end
 
   def test_a_turn_object_takes_a_card_as_an_argument
-    card = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
-    turn = Turn.new("Juneau", card)
-
-    assert_equal card, turn.card
+    assert_equal @card, @turn.card
   end
 
   def test_it_has_a_guess
-    card = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
-    turn = Turn.new("Juneau", card)
-
-    assert_equal "Juneau", turn.guess
+    assert_equal "Juneau", @turn.guess
   end
 
   def test_turn_object_finds_correct_answer
-    card = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
-    turn = Turn.new("Juneau", card)
+    turn_test = Turn.new("Juneau", @card)
 
-    assert turn.correct?
+    assert turn_test.correct?
   end
 
   def test_turn_correct_answer_feedback
-    card = Card.new("What is the capital of Alaska?", "Juneau", :Geography)
-    turn = Turn.new("Juneau", card)
+    turn_test = Turn.new("Juneau", @card)
 
-    assert_equal "Correct!", turn.feedback
+    assert_equal "Correct!", turn_test.feedback
   end
 
   def test_turn_finds_incorrect_answer
-    card = Card.new("Which planet is closest to the sun?", "Mercury", :STEM)
-    turn = Turn.new("Saturn", card)
+    turn_test = Turn.new("Saturn", @card)
 
-    refute turn.correct?
+    refute turn_test.correct?
   end
 
   def test_turn_incorrect_answer_feedback
-    card = Card.new("Which planet is closest to the sun?", "Mercury", :STEM)
-    turn = Turn.new("Saturn", card)
+    turn_test = Turn.new("Saturn", @card)
 
-    assert_equal "Incorrect.", turn.feedback
+    assert_equal "Incorrect.", turn_test.feedback
   end
 end
