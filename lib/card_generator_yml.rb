@@ -8,7 +8,6 @@ class CardGeneratorYML
   def initialize(filename = "cards.yml")
     @cards = []
     @filename = filename
-    @file
   end
 
   def cardgen
@@ -26,5 +25,4 @@ class CardGeneratorYML
       end
     end
   end
-
 end
