@@ -13,12 +13,4 @@ class CardGeneratorAPItest < Minitest::Test
     assert_instance_of CardGeneratorAPI, @card_generator
   end
 
-  def tests_default_filename
-    assert_equal "cards.txt", @card_generator.filename
-  end
-
-  def test_it_can_use_other_filenames
-    card_generator_test = CardGeneratorAPI.new("test.txt")
-
-    assert_equal "test.txt", card_generator_test.filename
-  end
+  #I am unsure how to perform testing on a random dataset call. Therefore instead of automated testing I relied on the program functionality.
