@@ -21,16 +21,19 @@ class Round
     yourturn = Turn.new(guess, self.current_card)
     #incriment to next card once turn is taken
     @currentcard += 1
-    #if your answer is correct, increase running total of correct answers by 1.
-    @numbercorrect += 1 if yourturn.correct?
-    #this line makes sure the category of the card is added to the hash, even if you did not answer correctly. Without it the hash will be empty with no correct answers.
-    @categorynumbercorrect[yourturn.card.category] = 0 if
-    @categorynumbercorrect[yourturn.card.category] < 1
-    #incriment the hash key by 1 if you answered correctly.
-    @categorynumbercorrect[yourturn.card.category] += 1 if yourturn.correct?
+    #this line is here to initialize the category hash on an incorrect answer.
+    @categorynumbercorrect[yourturn.card.category] = @categorynumbercorrect[yourturn.card.category]
     #add the entire turn object to the turns array
     @turns << yourturn
+    correctanswer if yourturn.correct?
     return yourturn
+  end
+
+  def correctanswer
+    #if your answer is correct, increase running total of correct answers by 1.
+    @numbercorrect += 1
+    #incriment the hash key by 1 if you answered correctly.
+    @categorynumbercorrect[@turns.last.card.category] += 1
   end
 
   def percent_correct

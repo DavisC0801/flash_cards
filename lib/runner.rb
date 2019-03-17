@@ -5,7 +5,18 @@ require_relative './turn.rb'
 require_relative './card_generator.rb'
 
 class Runner
-  cardcreator = CardGenerator.new
+  answered = false
+  acceptedtypes = ["txt", "csv", "yml", "api"]
+  while answered == false
+    puts "Which data sorce should be used for card generation?"
+    puts "Supported types are txt, csv, yml, or API."
+    print "> "
+    filetype = gets.chomp
+    answered = acceptedtypes.include?(filetype)
+  end
+
+  cardcreator = CardGeneratorCSV.new if filetype == "txt" || filetype == "csv"
+  cardcreator = CardGeneratorYML.new if filetype == "yml"
   cardcreator.cardgen
   deck = Deck.new(cardcreator.cards)
   round = Round.new(deck)

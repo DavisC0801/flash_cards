@@ -109,7 +109,4 @@ class RoundTest < Minitest::Test
 
     assert_equal [:Geography, :STEM], @round.category_list
   end
-
-  def
-  end
 end
