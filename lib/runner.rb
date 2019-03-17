@@ -4,6 +4,8 @@ require_relative './round.rb'
 require_relative './turn.rb'
 require_relative './card_generator_csv.rb'
 require_relative './card_generator_yml.rb'
+require_relative './card_generator_api.rb'
+
 
 class Runner
 
