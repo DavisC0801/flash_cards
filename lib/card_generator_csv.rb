@@ -7,7 +7,6 @@ class CardGeneratorCSV
   def initialize(filename = "cards.txt")
     @cards = []
     @filename = filename
-    @file
   end
 
   def cardgen

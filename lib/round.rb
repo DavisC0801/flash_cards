@@ -61,15 +61,15 @@ class Round
 
     #core gameplay loop, we set the tracker variable to the amount of cards in the deck and decrement by 1 every pass.
     until cardsleftracker == 0
-    puts "This is card number #{round.turns.length + 1} out of #{deck.count}."
-    puts "Question: #{round.current_card.question}"
-    print "> "
-    answer = gets.chomp
-    #calls the round.take_turn method and uses logic in that method for feedback.
-    currentturn = round.take_turn(answer)
-    #prints feedback from the turn object, which is returned by the take turn method.
-    puts "#{currentturn.feedback}"
-    cardsleftracker -= 1
+      puts "This is card number #{round.turns.length + 1} out of #{deck.count}."
+      puts "Question: #{round.current_card.question}"
+      print "> "
+      answer = gets.chomp
+      #calls the round.take_turn method and uses logic in that method for feedback.
+      currentturn = round.take_turn(answer)
+      #prints feedback from the turn object, which is returned by the take turn method.
+      puts "#{currentturn.feedback}"
+      cardsleftracker -= 1
     end
 
     puts "****** Game over! ******"
