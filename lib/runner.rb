@@ -2,9 +2,11 @@ require_relative './card.rb'
 require_relative './deck.rb'
 require_relative './round.rb'
 require_relative './turn.rb'
-require_relative './card_generator.rb'
+require_relative './card_generator_csv.rb'
+require_relative './card_generator_yml.rb'
 
 class Runner
+
   answered = false
   acceptedtypes = ["txt", "csv", "yml", "api"]
   while answered == false
@@ -24,9 +26,7 @@ class Runner
 
   cardsleftracker = deck.count
   # including this to have a graceful exit if cards are not created.
-  if deck.count == 0
-    abort("No deck found, you need one to play.")
-  end
+  abort("No deck found, you need one to play.") if deck.count == 0
 
   round.start(deck, round, cardsleftracker)
 end
