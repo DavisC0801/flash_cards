@@ -7,13 +7,14 @@ class CardGeneratorYMLTest < Minitest::Test
 
   def setup
     @card_generator = CardGeneratorYML.new
+  end
 
   def test_it_exists
     assert_instance_of CardGeneratorYML, @card_generator
   end
 
   def tests_default_filename
-    assert_equal "cards.txt", @card_generator.filename
+    assert_equal "cards.yml", @card_generator.filename
   end
 
   def test_it_can_use_other_filenames
@@ -31,18 +32,17 @@ class CardGeneratorYMLTest < Minitest::Test
     card_generator_tester = CardGeneratorYML.new
     card_generator_tester.cardgen
 
-    assert_equal card1.question, card_generatortester.cards[0].question
-    assert_equal card1.answer, card_generatortester.cards[0].answer
-    assert_equal card1.category, card_generatortester.cards[0].category
-    assert_equal card2.question, card_generatortester.cards[1].question
-    assert_equal card2.answer, card_generatortester.cards[1].answer
-    assert_equal card2.category, card_generatortester.cards[1].category
-    assert_equal card3.question, card_generatortester.cards[2].question
-    assert_equal card3.answer, card_generatortester.cards[2].answer
-    assert_equal card3.category, card_generatortester.cards[2].category
-    assert_equal card4.question, card_generatortester.cards[3].question
-    assert_equal card4.answer, card_generatortester.cards[3].answer
-    assert_equal card4.category, card_generatortester.cards[3].category
+    assert_equal card1.question, card_generator_tester.cards[0].question
+    assert_equal card1.answer, card_generator_tester.cards[0].answer
+    assert_equal card1.category, card_generator_tester.cards[0].category
+    assert_equal card2.question, card_generator_tester.cards[1].question
+    assert_equal card2.answer, card_generator_tester.cards[1].answer
+    assert_equal card2.category, card_generator_tester.cards[1].category
+    assert_equal card3.question, card_generator_tester.cards[2].question
+    assert_equal card3.answer, card_generator_tester.cards[2].answer
+    assert_equal card3.category, card_generator_tester.cards[2].category
+    assert_equal card4.question, card_generator_tester.cards[3].question
+    assert_equal card4.answer, card_generator_tester.cards[3].answer
+    assert_equal card4.category, card_generator_tester.cards[3].category
   end
-
 end
