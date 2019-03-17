@@ -17,6 +17,7 @@ class Runner
 
   cardcreator = CardGeneratorCSV.new if filetype == "txt" || filetype == "csv"
   cardcreator = CardGeneratorYML.new if filetype == "yml"
+  cardcreator = CardGeneratorAPI.new if filetype == "API" || filetype == "api"
   cardcreator.cardgen
   deck = Deck.new(cardcreator.cards)
   round = Round.new(deck)
