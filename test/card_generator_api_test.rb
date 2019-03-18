@@ -1,6 +1,6 @@
-equire 'minitest/autorun'
+require 'minitest/autorun'
 require 'minitest/pride'
-require_relative '../lib/card_generator_csv.rb'
+require_relative '../lib/card_generator_api.rb'
 require_relative '../lib/card.rb'
 
 class CardGeneratorAPItest < Minitest::Test
@@ -14,3 +14,4 @@ class CardGeneratorAPItest < Minitest::Test
   end
 
   #I am unsure how to perform testing on a random dataset call. Therefore instead of automated testing I relied on the program functionality.
+end
